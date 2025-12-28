@@ -16,7 +16,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: install python
-        uses: actions/python@v4
+        uses: actions/setup-python@v4
           with:
             python-version:  ${{ matrix.python }}
       - name: pip upgrade
@@ -30,7 +30,7 @@ jobs:
           ls -ltr
       - name: store model
         uses: actions/upload
-        with: |
+        with:
           name: ml-artifacts-${{matrix.python}}-${{github_run.id}}
           path: artifacts
         
