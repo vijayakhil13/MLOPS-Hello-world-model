@@ -17,8 +17,8 @@ jobs:
         uses: actions/checkout@v4
       - name: install python
         uses: actions/setup-python@v4
-          with:
-            python-version:  ${{ matrix.python }}
+        with:
+          python-version:  ${{ matrix.python }}
       - name: pip upgrade
         run: python -m pip --upgrade pip setuptools wheel
       - name: install requirements
