@@ -2,7 +2,7 @@ name: artifacts upload
 on:
   push:
     branches: [ main ]
-  pull-request:
+  pull_request:
     branches: [ main ]
 jobs:
   matrix-pip:
@@ -15,22 +15,27 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
       - name: install python
         uses: actions/setup-python@v4
         with:
           python-version:  ${{ matrix.python }}
+
       - name: pip upgrade
-        run: python -m pip --upgrade pip setuptools wheel
+        run: python -m pip install --upgrade pip setuptools wheel
+
       - name: install requirements
         run: python -m pip install -r requirements.txt
+
       - name: train model
         run: |
           python train.py
           cd artifacts
           ls -ltr
+
       - name: store model
         uses: actions/upload-artifact@v4
         with:
-          name: ml-artifacts-${{matrix.python}}-${{github_run.id}}
+          name: ml-artifacts-${{matrix.python}}-${{github.run_id}}
           path: artifacts
         
