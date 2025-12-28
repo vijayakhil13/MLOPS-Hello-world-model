@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: [ 3.11,3.12 ]
+        python: [3.11, 3.12]
 
     steps:
       - name: checkout
@@ -29,7 +29,7 @@ jobs:
           cd artifacts
           ls -ltr
       - name: store model
-        uses: actions/upload
+        uses: actions/upload-artifact@v4
         with:
           name: ml-artifacts-${{matrix.python}}-${{github_run.id}}
           path: artifacts
