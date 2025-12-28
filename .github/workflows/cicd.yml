@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   matrix-pip:
-    name: vineeth
+    name: train-model
     runs-on: ubuntu-latest
     strategy:
       matrix:
